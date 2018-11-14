@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "686054281962",
+    "firebase_url": "https://foodie-a1284.firebaseio.com",
+    "project_id": "foodie-a1284",
+    "storage_bucket": "foodie-a1284.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686054281962:android:b3900eb7abdcda9d",
+        "android_client_info": {
+          "package_name": "com.foodie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686054281962-ar2cr41oikjb59bt7n37fennjq20s8eh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpWfxabplswL-xSgEuhgddUVtwYbzN3ag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686054281962:android:735de41e1a93a390",
+        "android_client_info": {
+          "package_name": "com.foodie.foodie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686054281962-2o0tvu3ftrte7p4hooo3q2hl8041ttho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.foodie.foodie",
+            "certificate_hash": "ee9a59de0eded25eb9f23a4ae7797794d5819dea"
+          }
+        },
+        {
+          "client_id": "686054281962-ar2cr41oikjb59bt7n37fennjq20s8eh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpWfxabplswL-xSgEuhgddUVtwYbzN3ag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686054281962-ar2cr41oikjb59bt7n37fennjq20s8eh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
