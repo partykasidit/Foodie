@@ -1,5 +1,6 @@
 package com.foodie.foodie;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.Ve
         return vendors.size();
     }
 
-    class VendorViewHolder extends RecyclerView.ViewHolder {
+    class VendorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView vendorImage;
         TextView vendorName;
@@ -45,10 +46,21 @@ public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.Ve
             super(itemView);
             vendorImage = itemView.findViewById(R.id.iv_vendorImage);
             vendorName = itemView.findViewById(R.id.tv_vendorName);
+            itemView.setOnClickListener(this);
         }
 
         void bind(int position) {
             vendorName.setText(vendors.get(position).getName());
+            vendorImage.setImageResource(vendors.get(position).getImageResource());
+        }
+
+        @Override
+        public void onClick(View view) {
+            //int clickedPosition = getAdapterPosition();
+            Intent intent = new Intent(view.getContext(),MenuActivity.class);
+            intent.putExtra("position",getAdapterPosition());
+            view.getContext().startActivity(intent);
+
         }
     }
 }
