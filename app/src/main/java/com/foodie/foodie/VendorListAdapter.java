@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
-public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.VendorViewHolder>{
+public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.VendorViewHolder> {
 
     private ArrayList<Vendor> vendors;
 
@@ -51,7 +53,7 @@ public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.Ve
 
         void bind(int position) {
             vendorName.setText(vendors.get(position).getName());
-            vendorImage.setImageResource(vendors.get(position).getImageResource());
+            Glide.with(itemView.getContext()).load(vendors.get(position).getImageResource()).into(vendorImage);
         }
 
         @Override

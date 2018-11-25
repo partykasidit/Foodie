@@ -39,7 +39,7 @@ public class ShopActivity extends AppCompatActivity {
 
                 for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
                     Map<String,Object> data = dc.getDocument().getData();
-                    vendors.add(new Vendor(data.get("TH_name").toString(),data.get("EN_name").toString(),R.drawable.ic_launcher_background));
+                    vendors.add(new Vendor(data.get("TH_name").toString(),data.get("EN_name").toString(),data.get("vendorImageReference").toString()));
 
                 }
                 mVendorList = findViewById(R.id.rv_vendor_list);
