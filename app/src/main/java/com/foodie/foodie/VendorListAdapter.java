@@ -3,6 +3,7 @@ package com.foodie.foodie;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,8 +60,10 @@ public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.Ve
         @Override
         public void onClick(View view) {
             //int clickedPosition = getAdapterPosition();
+            Log.d("Foodie-VLA",vendors.get(getAdapterPosition()).getName());
             Intent intent = new Intent(view.getContext(),MenuActivity.class);
-            intent.putExtra("position",getAdapterPosition());
+            //this would cause problem when the name of vendors are duplicates.
+            intent.putExtra("selectedVendor",vendors.get(getAdapterPosition()).getNameInDatabase());
             view.getContext().startActivity(intent);
 
         }
