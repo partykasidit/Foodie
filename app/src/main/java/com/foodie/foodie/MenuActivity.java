@@ -2,10 +2,12 @@ package com.foodie.foodie;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -60,5 +62,11 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void onSummarizeButtonClicked(View view) {
+        Intent intent = new Intent(MenuActivity.this,SummarizeActivity.class);
+        intent.putParcelableArrayListExtra("order",mFoodAdapter.getOrder());
+        startActivity(intent);
     }
 }

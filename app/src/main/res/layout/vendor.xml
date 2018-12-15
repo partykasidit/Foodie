@@ -23,7 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:fontFamily="@font/kanit" />
+            android:fontFamily="@font/kanit"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"/>
 
     </RelativeLayout>
 
