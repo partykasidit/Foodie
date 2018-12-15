@@ -30,6 +30,8 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String selectedVendor = intent.getStringExtra("selectedVendor");
 
+        Log.d("Foodie-MA",selectedVendor);
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menus").document(selectedVendor).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
@@ -41,7 +43,6 @@ public class MenuActivity extends AppCompatActivity {
                 }
 
                 if (documentSnapshot != null && documentSnapshot.exists()) {
-                    Log.d("Foodie-MA", "Current data: " + documentSnapshot.getData());
                     for(Object object : documentSnapshot.getData().keySet()) {
                         String key = (String) object;
                         HashMap<String,Object> food = (HashMap<String, Object>) documentSnapshot.get(key);
@@ -59,25 +60,5 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
-
-//        public static ArrayList<FoodInStock> getArrayListWithoutZero(DocumentSnapshot documentSnapshot) {
-//            ArrayList<FoodInStock> foodList = new ArrayList<>();
-//            for(Object object : documentSnapshot.getData().keySet()) {
-//                String key = (String) object;
-//                HashMap<String,Object> food = (HashMap<String, Object>) documentSnapshot.get(key);
-//                FoodInStock foodInStock = getFoodInStock(food);
-//                if(foodInStock.getQuantityLeft()!=0) {
-//                    foodList.add(getFoodInStock(food));
-//                }
-//            }
-//            return foodList;
-//        }
-
-
-
-
-
-
-
     }
 }

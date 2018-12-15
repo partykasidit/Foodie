@@ -14,7 +14,9 @@ public class Food {
         this.EN_name = EN_name;
         this.TH_name = TH_name;
         this.price = price;
-        this.imageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageURL);
+        if(imageURL != null && imageURL != "") {
+            this.imageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageURL);
+        }
     }
 
     public String getEN_name() {
