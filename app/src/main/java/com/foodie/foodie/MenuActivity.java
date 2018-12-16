@@ -48,13 +48,16 @@ public class MenuActivity extends AppCompatActivity {
                     for(Object object : documentSnapshot.getData().keySet()) {
                         String key = (String) object;
                         HashMap<String,Object> food = (HashMap<String, Object>) documentSnapshot.get(key);
-                        foods.add(new Food(food.get("EN_name").toString(),food.get("TH_name").toString(),Double.valueOf(food.get("price").toString()),food.get("foodImageReference").toString()));
+                        if(food.containsKey("EN_name") && food.containsKey("TH_name") && food.containsKey("price") && food.containsKey("foodImageReference")) {
+                            foods.add(new Food(food.get("EN_name").toString(),food.get("TH_name").toString(),Double.valueOf(food.get("price").toString()),food.get("foodImageReference").toString()));
+                        }
+
                     }
                     mFoodList = findViewById(R.id.rv_food_list);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                     mFoodList.setLayoutManager(layoutManager);
                     mFoodList.setHasFixedSize(true);
-                    mFoodAdapter = new FoodListAdapter(foods);
+                    mFoodAdapter = new FoodListAdapter(foods,getSupportFragmentManager());
                     mFoodList.setAdapter(mFoodAdapter);
                 } else {
                     Log.d("Foodie-MA", "Current data: null");

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
@@ -54,7 +55,7 @@ public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.Ve
 
         void bind(int position) {
             vendorName.setText(vendors.get(position).getName());
-            Glide.with(itemView.getContext()).load(vendors.get(position).getImageResource()).into(vendorImage);
+            GlideApp.with(itemView.getContext()).load(vendors.get(position).getImageResource()).diskCacheStrategy(DiskCacheStrategy.ALL).into(vendorImage);
         }
 
         @Override
