@@ -1,24 +1,24 @@
 package com.foodie.foodie;
 
-import android.text.Layout;
+import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ToppingListAdapter extends BaseAdapter {
 
+    private Activity context;
     private ArrayList<Food> toppings;
-    private LayoutInflater layoutInflater;
 
-    public ToppingListAdapter(ArrayList<Food> toppings, LayoutInflater layoutInflater) {
+    ToppingListAdapter(Activity context,ArrayList<Food> toppings) {
         this.toppings = toppings;
-        this.layoutInflater = layoutInflater;
+        this.context = context;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ToppingListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.topping, parent, false);
+            convertView = context.getLayoutInflater().inflate(R.layout.topping, parent, false);
         }
 
         TextView toppingName = convertView.findViewById(R.id.tv_topping_name);

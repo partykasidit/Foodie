@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button shopButton = findViewById(R.id.shop_button);
 
+
+
     }
 
     public void onShopButtonClicked(View view) {
