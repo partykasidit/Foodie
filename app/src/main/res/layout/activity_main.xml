@@ -52,5 +52,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onLoginButtonClicked"
+        android:text="Login"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="167dp" />
+
 
 </android.support.constraint.ConstraintLayout>
