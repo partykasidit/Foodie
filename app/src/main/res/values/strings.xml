@@ -4,6 +4,7 @@
     <string name="my_order_button">MY ORDER</string>
     <string name="summarize_button">SUMMARIZE</string>
     <string name="title_activity_summarize">SummarizeActivity</string>
+    <string name="recommended">Recommended</string>
 
     <string name="facebook_app_id">2072166052806659</string>
     <string name="fb_login_protocol_scheme">fb2072166052806659</string>

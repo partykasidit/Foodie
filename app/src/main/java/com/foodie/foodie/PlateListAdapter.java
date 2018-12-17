@@ -1,5 +1,6 @@
 package com.foodie.foodie;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,9 +14,11 @@ import java.util.ArrayList;
 public class PlateListAdapter extends RecyclerView.Adapter<PlateListAdapter.PlateViewHolder>{
 
     private ArrayList<Plate> plates;
+    private Activity context;
 
-    PlateListAdapter(ArrayList plates) {
+    PlateListAdapter(Activity context,ArrayList plates) {
         this.plates = plates;
+        this.context = context;
     }
 
     class PlateViewHolder extends RecyclerView.ViewHolder {
@@ -24,8 +27,11 @@ public class PlateListAdapter extends RecyclerView.Adapter<PlateListAdapter.Plat
         ImageButton removeButton;
         ListView toppingListView;
 
-        public PlateViewHolder(View itemView) {
+        PlateViewHolder(View itemView) {
             super(itemView);
+            toppings = new ArrayList<>();
+            //retrieve data from Firebase
+            toppings.add(new Food("Add cheese","เพิ่มชีส",10,null));
             toppingListView = itemView.findViewById(R.id.lv_toppings);
             removeButton = itemView.findViewById(R.id.ib_remove_button);
         }
@@ -42,11 +48,12 @@ public class PlateListAdapter extends RecyclerView.Adapter<PlateListAdapter.Plat
 
     @Override
     public void onBindViewHolder(@NonNull PlateViewHolder plateViewHolder, int i) {
-
+        ToppingListAdapter toppingListAdapter = new ToppingListAdapter(context,plateViewHolder.toppings);
+        plateViewHolder.toppingListView.setAdapter(toppingListAdapter);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return plates.size();
     }
 }

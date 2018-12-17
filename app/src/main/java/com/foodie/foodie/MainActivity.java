@@ -15,10 +15,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button shopButton = findViewById(R.id.shop_button);
-
-        Log.d("Main","Test Main");
-
-
     }
 
     public void onShopButtonClicked(View view) {

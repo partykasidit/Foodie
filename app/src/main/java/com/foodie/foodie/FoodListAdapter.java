@@ -93,7 +93,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
                     plates.add(new Plate(foodList.get(getAdapterPosition())));
                     counter++;
                     plateCounter.setText(String.valueOf(counter));
-                    if(counter > 0 ) {
+                    if(counter > 0) {
                         plateCounter.setVisibility(View.VISIBLE);
                     }
                 }

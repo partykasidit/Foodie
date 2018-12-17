@@ -21,7 +21,7 @@
         <activity android:name=".MainActivity">
 
         </activity>
-
+      
         <activity android:name=".ShopActivity" />
 
         <meta-data
@@ -29,6 +29,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".MenuActivity" />
+      
         <activity android:name=".SummarizeActivity" />
 
         <meta-data
