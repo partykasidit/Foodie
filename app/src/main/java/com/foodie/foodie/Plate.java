@@ -23,6 +23,12 @@ public class Plate implements Parcelable {
         return true;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        //this must be changed when Plate has toppings
+        return this.food.getTH_name().equals(((Plate) obj).food.getTH_name());
+    }
+
     //implementing Parcelable
 
     @Override
@@ -52,11 +58,6 @@ public class Plate implements Parcelable {
             return new Plate[size];
         }
     };
-
-
-
-
-
 
 
 }

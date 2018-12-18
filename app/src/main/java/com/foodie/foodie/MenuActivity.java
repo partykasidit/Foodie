@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -66,8 +67,14 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void onSummarizeButtonClicked(View view) {
-        Intent intent = new Intent(MenuActivity.this,SummarizeActivity.class);
-        intent.putParcelableArrayListExtra("order",mFoodAdapter.getOrder());
-        startActivity(intent);
+        ArrayList<Plate> order = mFoodAdapter.getOrder();
+        if(order.size() > 0) {
+            Intent intent = new Intent(MenuActivity.this,SummarizeActivity.class);
+            intent.putParcelableArrayListExtra("order",order);
+            startActivity(intent);
+        }else {
+            Toast.makeText(this,"Please select your food.",Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

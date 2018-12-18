@@ -12,7 +12,7 @@
         android:id="@+id/fl_card_frame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/ib_add_button"
+        app:layout_constraintEnd_toStartOf="@id/add_and_remove_linear_layout"
         app:layout_constraintStart_toStartOf="parent">
 
         <android.support.v7.widget.CardView
@@ -66,17 +66,36 @@
 
     </FrameLayout>
 
-
-    <ImageButton
-        android:id="@+id/ib_add_button"
+    <LinearLayout
+        android:id="@+id/add_and_remove_linear_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_add_circle_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@id/fl_card_frame"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/fl_card_frame"
-        app:layout_constraintTop_toTopOf="@id/fl_card_frame" />
+        app:layout_constraintTop_toTopOf="@id/fl_card_frame"
+        app:layout_constraintBottom_toBottomOf="@id/fl_card_frame">
+
+        <ImageButton
+            android:contentDescription="@string/add_button"
+            android:id="@+id/ib_add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add_circle_black_24dp"
+            android:layout_margin="8dp"/>
+
+        <ImageButton
+            android:contentDescription="@string/remove_button"
+            android:id="@+id/ib_remove_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_margin="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_remove_circle" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

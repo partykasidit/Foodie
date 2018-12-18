@@ -71,6 +71,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
         int counter = 0;
         CardView cardView;
         ImageButton addButton;
+        ImageButton removeButton;
 
         FoodViewHolder(final View itemView) {
             super(itemView);
@@ -79,13 +80,13 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
             price = itemView.findViewById(R.id.tv_price);
             plateCounter = itemView.findViewById(R.id.tv_counter);
             cardView = itemView.findViewById(R.id.cv_food);
-            cardView.setOnClickListener(new View.OnClickListener() {
+            /*cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     DialogFragment dialogFragment = new ToppingFragment();
                     dialogFragment.show(fragmentManager,"Topping");
                 }
-            });
+            });*/
             addButton = itemView.findViewById(R.id.ib_add_button);
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,6 +96,20 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
                     plateCounter.setText(String.valueOf(counter));
                     if(counter > 0) {
                         plateCounter.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+            removeButton = itemView.findViewById(R.id.ib_remove_button);
+            removeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean removed = plates.remove(new Plate(foodList.get(getAdapterPosition())));
+                    if(counter > 0 && removed) {
+                        counter--;
+                    }
+                    plateCounter.setText(String.valueOf(counter));
+                    if(counter <= 0) {
+                        plateCounter.setVisibility(View.INVISIBLE);
                     }
                 }
             });

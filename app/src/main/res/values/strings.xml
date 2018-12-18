@@ -6,6 +6,8 @@
     <string name="title_activity_summarize">SummarizeActivity</string>
     <string name="recommended">Recommended</string>
     <string name="recommended_food_image">Recommended Food Image</string>
+    <string name="add_button">Add button</string>
+    <string name="remove_button">Remove button</string>
 
     <string name="facebook_app_id">2072166052806659</string>
     <string name="fb_login_protocol_scheme">fb2072166052806659</string>
