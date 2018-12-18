@@ -8,51 +8,52 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private ArrayList<Items> mExampleList;
+    private RecyclerView mRecycleView;
+    private Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
-    private RecyclerView rcv;
-    private RecyclerView.Adapter<MyViewHolder> adapter;
-    private ArrayList<MyData> dataset;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rcv = new RecyclerView(this);
-        rcv.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecyclerView.Adapter<MyViewHolder>() {
-            @NonNull
-            @Override
-            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                View card = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_main,viewGroup,false);
-                return new MyViewHolder(card);
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-
-            }
-
-            @Override
-            public int getItemCount() {
-                return 100;
-            }
-        };
-        rcv.setAdapter(adapter);
-        setContentView(rcv);
+        setContentView(R.layout.activity_main);
+        createExampleList();
+        buildRecyclerView();
+    }
+    public void removeItem(int i){
+        mExampleList.remove(i);
+        mAdapter.notifyDataSetChanged();
     }
 
-    private class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView test;
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
+    public void createExampleList(){
+        mExampleList = new ArrayList<>();
+        mExampleList.add(new Items(R.drawable.ic_accessibility_black_24dp,"klod"));
+        mExampleList.add(new Items(R.drawable.ic_android_black_24dp,"klod2"));
 
-        }
     }
+    public void buildRecyclerView(){
+        mRecycleView = findViewById(R.id.recycleView);
+        mRecycleView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new Adapter(mExampleList);
+        mRecycleView.setLayoutManager((mLayoutManager));
+        mRecycleView.setAdapter(mAdapter);
 
-    private class MyData {
+        mAdapter.setOnItemClickListener(new Adapter.onItemClickListener() {
+            @Override
+            public void onDoneClick(int i) {
+                removeItem(i);
+            }
+        });
     }
 }
