@@ -20,5 +20,11 @@ public class SummarizeActivity extends AppCompatActivity {
         ArrayList<Plate> order = intent.getParcelableArrayListExtra("order");
         Log.d("Foodie-SA",order.toString());
 
+
+
+
+
+
+
     }
 }
