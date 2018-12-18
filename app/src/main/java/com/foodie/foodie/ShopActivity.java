@@ -1,10 +1,12 @@
 package com.foodie.foodie;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -26,6 +28,12 @@ public class ShopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setTitle("Vendors");
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Vendors").addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -50,6 +58,17 @@ public class ShopActivity extends AppCompatActivity {
                 mVendorList.setAdapter(mListAdapter);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

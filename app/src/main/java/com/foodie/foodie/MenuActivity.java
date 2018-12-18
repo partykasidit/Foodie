@@ -1,12 +1,15 @@
 package com.foodie.foodie;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -32,6 +35,13 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String selectedVendor = intent.getStringExtra("selectedVendor");
+        String selectedVendorTHName = intent.getStringExtra("selectedVendorTH");
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setTitle(selectedVendorTHName);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menus").document(selectedVendor).addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -76,5 +86,17 @@ public class MenuActivity extends AppCompatActivity {
             Toast.makeText(this,"Please select your food.",Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

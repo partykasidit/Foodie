@@ -21,6 +21,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:cardCornerRadius="@dimen/card_corner_radius">
 
             <RelativeLayout

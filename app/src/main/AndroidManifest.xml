@@ -22,15 +22,18 @@
 
         </activity>
       
-        <activity android:name=".ShopActivity" />
+        <activity android:name=".ShopActivity"
+            android:parentActivityName=".MainActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MenuActivity" />
+        <activity android:name=".MenuActivity"
+            android:parentActivityName=".ShopActivity"/>
       
-        <activity android:name=".SummarizeActivity" />
+        <activity android:name=".SummarizeActivity"
+            android:parentActivityName=".MenuActivity"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
