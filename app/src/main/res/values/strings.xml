@@ -5,5 +5,6 @@
     <string name="summarize_button">SUMMARIZE</string>
     <string name="title_activity_summarize">SummarizeActivity</string>
     <string name="recommended">Recommended</string>
+    <string name="recommended_food_image">Recommended Food Image</string>
 
 </resources>

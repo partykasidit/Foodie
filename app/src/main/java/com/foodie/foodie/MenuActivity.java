@@ -32,8 +32,6 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String selectedVendor = intent.getStringExtra("selectedVendor");
 
-        Log.d("Foodie-MA",selectedVendor);
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menus").document(selectedVendor).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
