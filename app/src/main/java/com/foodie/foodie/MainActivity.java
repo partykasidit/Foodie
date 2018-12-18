@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button shopButton = findViewById(R.id.bt_shop_button);
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menus").document("Recommendations").addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
@@ -66,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onShopButtonClicked(View view) {
         Intent intent = new Intent(MainActivity.this,ShopActivity.class);
+        startActivity(intent);
+    }
+
+    public void onLoginButtonClicked(View view){
+        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
     }
 }
