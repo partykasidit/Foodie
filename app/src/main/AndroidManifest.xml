@@ -18,21 +18,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
 
         </activity>
       
         <activity android:name=".ShopActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".MenuActivity"
-            android:parentActivityName=".ShopActivity"/>
+            android:parentActivityName=".ShopActivity"
+            android:screenOrientation="portrait"/>
       
         <activity android:name=".SummarizeActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MenuActivity"/>
 
         <meta-data
@@ -55,9 +59,12 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".AccountActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,6 +72,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+
+        <activity android:name=".WelcomeActivity">
+
 
         </activity>
     </application>
