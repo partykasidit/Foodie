@@ -2,6 +2,7 @@ package com.foodie.foodie;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.hide();
+        }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menus").document("Recommendations").addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -69,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void onLoginButtonClicked(View view){
         Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 }

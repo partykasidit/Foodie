@@ -63,6 +63,7 @@ public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.Ve
             //int clickedPosition = getAdapterPosition();
             Log.d("Foodie-VLA",vendors.get(getAdapterPosition()).getName());
             Intent intent = new Intent(view.getContext(),MenuActivity.class);
+            intent.putExtra("selectedVendorTH",vendors.get(getAdapterPosition()).getName());
             //this would cause problem when the name of vendors are duplicates.
             intent.putExtra("selectedVendor",vendors.get(getAdapterPosition()).getNameInDatabase());
             view.getContext().startActivity(intent);

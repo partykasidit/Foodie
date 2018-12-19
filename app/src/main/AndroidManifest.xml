@@ -17,20 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity">
-
-        </activity>
-      
-        <activity android:name=".ShopActivity" />
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".ShopActivity"
+            android:parentActivityName=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MenuActivity" />
-      
-        <activity android:name=".SummarizeActivity" />
+        <activity
+            android:name=".MenuActivity"
+            android:parentActivityName=".ShopActivity" />
+        <activity
+            android:name=".SummarizeActivity"
+            android:parentActivityName=".MenuActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -55,15 +56,14 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".SummarizeListAdaptor"></activity>
     </application>
 
 </manifest>
