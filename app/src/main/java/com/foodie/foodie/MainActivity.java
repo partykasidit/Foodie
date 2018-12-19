@@ -73,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onMyOrderButtonClicked(View view) {
+        Intent intent = new Intent(MainActivity.this,MyOrderActivity.class);
+        startActivity(intent);
+    }
+
     public void onLoginButtonClicked(View view){
         Intent intent = new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
