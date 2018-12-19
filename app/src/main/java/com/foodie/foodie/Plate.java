@@ -23,6 +23,7 @@ public class Plate implements Parcelable {
         return true;
     }
 
+
     @Override
     public boolean equals(Object obj) {
         //this must be changed when Plate has toppings

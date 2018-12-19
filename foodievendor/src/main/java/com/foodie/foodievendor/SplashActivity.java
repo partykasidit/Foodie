@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
 
 // decide here whether to navigate to Login or Main Activity
 
-        SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
+        /*SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
         if (pref.getBoolean("activity_executed", false)) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-        Log.d("Splash","Test Splash");
+        Log.d("Splash","Test Splash");*/
     }
 
 }

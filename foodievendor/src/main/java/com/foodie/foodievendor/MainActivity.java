@@ -19,10 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
