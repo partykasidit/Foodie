@@ -27,6 +27,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private RecyclerView mFoodList;
     private FoodListAdapter mFoodAdapter;
+    private String selectedVendor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
-        String selectedVendor = intent.getStringExtra("selectedVendor");
+        selectedVendor = intent.getStringExtra("selectedVendor");
         String selectedVendorTHName = intent.getStringExtra("selectedVendorTH");
 
         ActionBar actionBar = getSupportActionBar();
@@ -81,6 +82,7 @@ public class MenuActivity extends AppCompatActivity {
         if(order.size() > 0) {
             Intent intent = new Intent(MenuActivity.this,SummarizeActivity.class);
             intent.putParcelableArrayListExtra("order",order);
+            intent.putExtra("selectedVendor",selectedVendor);
             startActivity(intent);
         }else {
             Toast.makeText(this,"Please select your food.",Toast.LENGTH_SHORT).show();
@@ -99,4 +101,5 @@ public class MenuActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.widget.Button;
 
 public class WelcomeActivity extends AppCompatActivity {
+
     Button btnsub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        btnsub = (Button) findViewById(R.id.buttonstart);
+        btnsub = findViewById(R.id.buttonstart);
     }
 }
