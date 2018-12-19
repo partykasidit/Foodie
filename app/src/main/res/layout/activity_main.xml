@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/foodiebackground">
 
     <TextView
         android:id="@+id/tv_recommended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/recommended"
+        android:layout_marginTop="28dp"
+        android:text="RECOMMENDED"
+        android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_recommendations"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="371dp"
         app:layout_constraintBottom_toTopOf="@id/bt_shop_button"
         app:layout_constraintTop_toBottomOf="@id/tv_recommended">
 
@@ -31,20 +33,24 @@
         android:id="@+id/bt_shop_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/shop_button"
+        android:background="@color/lightblue"
         android:onClick="onShopButtonClicked"
+        android:text="@string/shop_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/my_order_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/my_order_button"
+        android:background="@color/lightorange"
         android:onClick="onMyOrderButtonClicked"
+        android:text="@string/my_order_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <android.support.constraint.Guideline
@@ -56,12 +62,17 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="73dp"
+        android:layout_height="47dp"
+        android:background="@drawable/buttonnew"
         android:onClick="onLoginButtonClicked"
         android:text="Login"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="167dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
 
 
 </android.support.constraint.ConstraintLayout>

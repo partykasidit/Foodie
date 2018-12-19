@@ -5,7 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@color/white">
+    android:background="@color/lightblue">
+
+    <ImageView
+        android:layout_width="198dp"
+        android:layout_height="169dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/foodie" />
 
 
     <Button
@@ -15,11 +23,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="230dp"
-        android:layout_marginEnd="100dp"
-        android:text="login with  facebook"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="329dp"
+        android:layout_marginEnd="101dp"
         android:background="@drawable/buttonfacebook"
+        android:elevation="20sp"
+        android:text="login with  facebook"
         android:textColor="@color/white" />
 
 
