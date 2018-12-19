@@ -8,12 +8,21 @@
     android:background="@color/lightblue">
 
     <ImageView
-        android:layout_width="198dp"
-        android:layout_height="169dp"
+        android:layout_width="225dp"
+        android:layout_height="191dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="49dp"
         android:background="@drawable/foodie" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="205dp"
+        android:layout_centerHorizontal="true"
+        android:text="whenever you're hungry"
+        android:textSize="10dp"
+        android:textColor="@color/white" />
 
 
     <Button
