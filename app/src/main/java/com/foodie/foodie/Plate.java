@@ -23,6 +23,9 @@ public class Plate implements Parcelable {
         return true;
     }
 
+    public Food getFood() {
+        return food;
+    }
 
     @Override
     public boolean equals(Object obj) {

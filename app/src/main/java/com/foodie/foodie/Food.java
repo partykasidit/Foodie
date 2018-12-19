@@ -34,6 +34,7 @@ public class Food implements Parcelable {
         return price;
     }
 
+
     StorageReference getImageReference() {
         return imageReference;
     }
