@@ -43,6 +43,13 @@ public class SummarizeActivity extends AppCompatActivity {
         mSummarizeList.setHasFixedSize(true);
         listAdaptor= new SummarizeListAdaptor(order);
         mSummarizeList.setAdapter(listAdaptor);
+        
+        SharedPreferences sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
+        String userUID = sharedPreferences.getString("UserUID",null);
+
+        if(userUID != null) {
+            Log.d("Foodie-SA",userUID);
+        }
 
     }
 
