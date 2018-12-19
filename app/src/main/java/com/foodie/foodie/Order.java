@@ -1,38 +1,40 @@
 package com.foodie.foodie;
 
+import java.util.ArrayList;
+
 public class Order {
 
-    private String orderNumber;
-    private int amount;
-    private String customerID;
-    private String foodName;
+    private int orderNumber;
+    private boolean isFinished;
+    private String customerUID;
     private String vendorName;
+    private ArrayList<FoodOrder> foodOrders;
 
-    public Order(String orderNumber, int amount, String customerID, String foodName, String vendorName) {
+    public Order(int orderNumber, boolean status, String customerUID, String vendorName, ArrayList<FoodOrder> foodOrders) {
         this.orderNumber = orderNumber;
-        this.amount = amount;
-        this.customerID = customerID;
-        this.foodName = foodName;
+        this.isFinished = status;
+        this.customerUID = customerUID;
         this.vendorName = vendorName;
+        this.foodOrders = foodOrders;
     }
 
-    public String getOrderNumber() {
+    public int getOrderNumber() {
         return orderNumber;
     }
 
-    public int getAmount() {
-        return amount;
+    public boolean isFinished() {
+        return isFinished;
     }
 
-    public String getCustomerID() {
-        return customerID;
-    }
-
-    public String getFoodName() {
-        return foodName;
+    public String getCustomerUID() {
+        return customerUID;
     }
 
     public String getVendorName() {
         return vendorName;
+    }
+
+    public ArrayList<FoodOrder> getFoodOrders() {
+        return foodOrders;
     }
 }

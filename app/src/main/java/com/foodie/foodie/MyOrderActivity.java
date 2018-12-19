@@ -1,5 +1,7 @@
 package com.foodie.foodie;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,8 +34,15 @@ public class MyOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
 
+        SharedPreferences sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
+        final String userUID = sharedPreferences.getString("UserUID",null);
+
+        if(userUID != null) {
+            Log.d("Foodie-SA",userUID);
+        }
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Orders").document("uPyaOaLrgJlaoU2LDoW5").addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        db.collection("Orders").document("bXH5xY7FQFqQPtxw6cAU").addSnapshotListener(new EventListener<DocumentSnapshot>() {
             ArrayList<Order> orders = new ArrayList<>();
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -44,8 +53,10 @@ public class MyOrderActivity extends AppCompatActivity {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
                     for (Object object: documentSnapshot.getData().keySet()){
                         String key = (String) object;
-                        HashMap<String,Object> myData = (HashMap<String, Object>)documentSnapshot.get(key);
-                        Log.d("Foodie-MOA",myData.toString());
+                        HashMap<String,Object> order = (HashMap<String, Object>)documentSnapshot.get(key);
+
+                        Log.d("Foodie-MOA",order.toString());
+                        //orders.add(new Order(key,order.get("amount"),userUID,order.get("foodName"),))
                     }
                 }else {
                     System.out.print("Don't have any orders");
@@ -83,7 +94,7 @@ public class MyOrderActivity extends AppCompatActivity {
         setContentView(recyclerView);*/
     }
 
-    /*private class MyViewHolder extends RecyclerView.ViewHolder {
+    private class MyViewHolder extends RecyclerView.ViewHolder {
         TextView orderNumber;
         TextView orderName;
         TextView amountNum;
@@ -93,5 +104,5 @@ public class MyOrderActivity extends AppCompatActivity {
             orderName = (TextView)findViewById(R.id.orderName);
             amountNum = (TextView)findViewById(R.id.amountNum);
         }
-    }*/
+    }
 }
