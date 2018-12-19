@@ -1,6 +1,8 @@
 package com.foodie.foodie;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,14 @@ public class SummarizeActivity extends AppCompatActivity {
             actionBar.setTitle("Summarize");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
+        String userUID = sharedPreferences.getString("UserUID",null);
+
+        if(userUID != null) {
+            Log.d("Foodie-SA",userUID);
+        }
+
 
         Intent intent = getIntent();
         ArrayList<Plate> order = intent.getParcelableArrayListExtra("order");
