@@ -48,4 +48,5 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:[4,5)'
     com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
 
+  //  implementation 'com.google.firebase:firebase-database:16.0.5'
 }

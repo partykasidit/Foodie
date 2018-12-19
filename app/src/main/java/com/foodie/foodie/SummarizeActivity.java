@@ -1,24 +1,31 @@
 package com.foodie.foodie;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class SummarizeActivity extends AppCompatActivity {
+
+    private static final String TAG = "SummarizeActivity";
+    private RecyclerView mSummarizeList;
+    private SummarizeListAdaptor listAdaptor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summarize);
+        Log.d(TAG, "onCreate: started.");
+
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) {
@@ -26,6 +33,17 @@ public class SummarizeActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        Intent intent = getIntent();
+        ArrayList<Plate> order = intent.getParcelableArrayListExtra("order");
+        Log.d("Foodie-SA",order.toString());
+
+        mSummarizeList= findViewById(R.id.my_recycler_view);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        mSummarizeList.setLayoutManager(layoutManager);
+        mSummarizeList.setHasFixedSize(true);
+        listAdaptor= new SummarizeListAdaptor(order);
+        mSummarizeList.setAdapter(listAdaptor);
+        
         SharedPreferences sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
         String userUID = sharedPreferences.getString("UserUID",null);
 
@@ -33,12 +51,8 @@ public class SummarizeActivity extends AppCompatActivity {
             Log.d("Foodie-SA",userUID);
         }
 
-
-        Intent intent = getIntent();
-        ArrayList<Plate> order = intent.getParcelableArrayListExtra("order");
-        Log.d("Foodie-SA",order.toString());
-
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -50,4 +64,6 @@ public class SummarizeActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 }
