@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -54,16 +55,34 @@ public class MyOrderActivity extends AppCompatActivity {
                     for (Object object: documentSnapshot.getData().keySet()){
                         String key = (String) object;
                         HashMap<String,Object> order = (HashMap<String, Object>)documentSnapshot.get(key);
-
-                        Log.d("Foodie-MOA",order.toString());
-                        //orders.add(new Order(key,order.get("amount"),userUID,order.get("foodName"),))
+                        //Log.d("Foodie-MOA",order.toString());
+                        Map<String,Object> foodOrderMap = (Map<String,Object>) order.get("foodOrders");
+                        ArrayList<Object> foodOrderArrayList = new ArrayList<Object>(foodOrderMap.values());
+                        Log.d("Foodie-MOA",foodOrderMap.toString());
+                        Log.d("Foodie-MOA",foodOrderArrayList.toString());
+                        ArrayList<FoodOrder> foodOrders = new ArrayList<>();
+                        for(int i=0;i<foodOrderArrayList.size();i++) {
+                            Log.d("Foodie-MOA",foodOrderArrayList.get(i).toString());
+                            Map<String,Object> foodOrder = (Map<String,Object>)foodOrderArrayList.get(i);
+                            String foodName = (String) foodOrder.get("foodName");
+                            Long longAmount = (Long) foodOrder.get("amount");
+                            int amount = longAmount.intValue();
+                            Log.d("Foodie-MOA","foodName : " + foodName + " , " + "amount : " + amount );
+                            foodOrders.add(new FoodOrder(foodName,amount));
+                        }
+                        //Log.d("Foodie-MOA",foodOrders.toString());
+                        orders.add(new Order(key,(Boolean) order.get("isFinished"),(String) order.get("customerUID"),(String) order.get("vendorName"),foodOrders));
                     }
                 }else {
                     System.out.print("Don't have any orders");
                 }
 
+
+
             }
         });
+
+
 
         /*recyclerView = new RecyclerView(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
