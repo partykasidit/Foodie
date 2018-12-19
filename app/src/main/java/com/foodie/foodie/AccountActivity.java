@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class AccountActivity extends AppCompatActivity {
     private Button mLogoutBtn;
     private FirebaseAuth mAuth;
+    private Button mHomeBtn;
 
 
     @Override
@@ -23,6 +24,7 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         mLogoutBtn = (Button)findViewById(R.id.logoutBtn);
+        mHomeBtn = (Button)findViewById(R.id.homeBtn);
 
         //Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -38,6 +40,13 @@ public class AccountActivity extends AppCompatActivity {
                 LoginManager.getInstance().logOut();
                 updateUI();
 
+            }
+        });
+
+        mHomeBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                updateUI2();
             }
         });
     }
@@ -59,5 +68,11 @@ public class AccountActivity extends AppCompatActivity {
         startActivity(accountIntent);
         finish();
 
+    }
+    private void updateUI2() {
+        Toast.makeText(AccountActivity.this,"Please make your Order",Toast.LENGTH_LONG).show();
+        Intent accountIntent = new Intent(AccountActivity.this,MainActivity.class);
+        startActivity(accountIntent);
+        finish();
     }
 }

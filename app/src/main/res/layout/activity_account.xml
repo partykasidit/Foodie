@@ -23,4 +23,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="193dp"
         android:text="log out " />
+
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="99dp"
+        android:text="Home" />
 </RelativeLayout>
