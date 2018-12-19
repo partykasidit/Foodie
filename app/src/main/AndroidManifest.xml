@@ -17,27 +17,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-      
-        <activity android:name=".ShopActivity"
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ShopActivity"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MenuActivity"
+        <activity
+            android:name=".MenuActivity"
             android:parentActivityName=".ShopActivity"
-            android:screenOrientation="portrait"/>
-      
-        <activity android:name=".SummarizeActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".MenuActivity"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SummarizeActivity"
+            android:parentActivityName=".MenuActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -59,26 +58,24 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AccountActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".WelcomeActivity">
-
-
-        </activity>
+        <activity android:name=".WelcomeActivity"></activity>
+        <activity android:name=".MyOrderActivity"></activity>
     </application>
 
 </manifest>
