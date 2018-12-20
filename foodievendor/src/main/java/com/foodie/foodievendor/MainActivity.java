@@ -3,6 +3,9 @@ package com.foodie.foodievendor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPref = this.getSharedPreferences("UID",Context.MODE_PRIVATE);
+        final String UID = sharedPref.getString("UID", null);
 
         mLogoutBtn = findViewById(R.id.vendorLogout);
         mAuth = FirebaseAuth.getInstance();
@@ -88,13 +94,26 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    /*Iterator iterator = orders.iterator();
-                    while(iterator.hasNext()) {
-                        Order currentOrder = (Order) iterator.next();
-                        if(!currentOrder.getCustomerUID().equals(userUID)) {
-                            iterator.remove();
+                    //Log.d("Foodie Vendor-MA",UID);
+
+                    if(UID != null) {
+                        String vendorName = null;
+                        if(UID.equals("72tcSXI7asOe3OTMuaBx4V09tYQ2")) {
+                            vendorName = "Today's Steak";
+                        }else if(UID.equals("ttaem5eDLjYZkz1I4lyeNrI3zk32")) {
+                            vendorName = "Today's Steak (Cooked to order)";
                         }
-                    }*/
+
+                        Iterator iterator = orders.iterator();
+                        while(iterator.hasNext()) {
+                            Order currentOrder = (Order) iterator.next();
+                            if(!currentOrder.getVendorName().equals(vendorName)) {
+                                iterator.remove();
+                            }
+                        }
+                    } else {
+                        Log.d("Foodie Vendor-MA","Showing all list");
+                    }
 
                     recyclerView = findViewById(R.id.rv_orders);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -110,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void updateUI() {
-        SharedPreferences sharedPreferences = getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
-        sharedPreferences.edit().remove("UserUID").apply();
+        SharedPreferences sharedPreferences = getSharedPreferences("UID",Context.MODE_PRIVATE);
+        sharedPreferences.edit().remove("UID").apply();
 
         Toast.makeText(MainActivity.this, "You're logged out", Toast.LENGTH_LONG).show();
 
@@ -122,5 +141,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
 }

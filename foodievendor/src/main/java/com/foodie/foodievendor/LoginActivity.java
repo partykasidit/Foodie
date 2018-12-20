@@ -22,8 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEmail;
     private EditText mPassword;
     private Button mLogin;
-
-
     private FirebaseAuth mAuth;
 
     private  FirebaseAuth.AuthStateListener mAuthListener;
@@ -44,6 +42,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
 
+                    SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("UID",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("UID", mAuth.getUid());
+                    editor.apply();
+
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
 
                 }
@@ -58,10 +61,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("mAuth", mAuth.getUid());
-        editor.apply();
+
+
+
     }
 
     @Override
@@ -89,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
-
 
     }
 }
