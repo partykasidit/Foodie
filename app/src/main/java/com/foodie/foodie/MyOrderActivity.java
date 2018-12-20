@@ -83,6 +83,7 @@ public class MyOrderActivity extends AppCompatActivity {
                         orders.add(new Order(key,(Boolean) order.get("isFinished"),(String) order.get("customerUID"),(String) order.get("vendorName"),foodOrders));
                     }
 
+
                     Iterator iterator = orders.iterator();
                     while(iterator.hasNext()) {
                         Order currentOrder = (Order) iterator.next();
