@@ -51,7 +51,6 @@
         android:onClick="onPayButtonClicked"
         android:text="Pay"
         android:textColor="#ffffff "
-        android:textSize="20dp"
         android:background="@drawable/rounded_button"/>
 
 </RelativeLayout>
