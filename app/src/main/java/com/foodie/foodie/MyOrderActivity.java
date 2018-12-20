@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import java.util.HashMap;
 import javax.annotation.Nullable;
 
 public class MyOrderActivity extends AppCompatActivity {
+    Toolbar toolbar;
 
     public RecyclerView recyclerView;
     //private RecyclerView.Adapter<MyViewHolder> adapter;
@@ -33,6 +36,15 @@ public class MyOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
+
+        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("  My Order");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
         final String userUID = sharedPreferences.getString("UserUID",null);
@@ -92,6 +104,15 @@ public class MyOrderActivity extends AppCompatActivity {
         };
         recyclerView.setAdapter(adapter);
         setContentView(recyclerView);*/
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == android.R.id.home){
+            this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private class MyViewHolder extends RecyclerView.ViewHolder {

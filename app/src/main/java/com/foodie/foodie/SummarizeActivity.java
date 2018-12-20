@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -17,6 +18,7 @@ import java.util.List;
 
 
 public class SummarizeActivity extends AppCompatActivity {
+    Toolbar toolbar;
 
     private static final String TAG = "SummarizeActivity";
     private RecyclerView mSummarizeList;
@@ -26,7 +28,12 @@ public class SummarizeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summarize);
+        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("  Summarize");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Log.d(TAG, "onCreate: started.");
+
 
 
         ActionBar actionBar = getSupportActionBar();
