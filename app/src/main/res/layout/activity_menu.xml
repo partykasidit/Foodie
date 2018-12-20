@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MenuActivity">
+    tools:context=".MenuActivity"
+    android:background="@drawable/foodiebackground">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_food_list"
