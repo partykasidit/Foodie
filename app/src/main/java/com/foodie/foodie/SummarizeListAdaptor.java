@@ -79,8 +79,8 @@ public class SummarizeListAdaptor extends RecyclerView.Adapter<SummarizeListAdap
         }
 
         void bind(int position) {
-            summarize_foodname.setText(plates.get(position).getFood().getTH_name());
-            summarize_price.setText(String.valueOf(plates.get(position).getFood().getPrice()));
+            summarize_foodname.setText(plates.get(position).getFood().getTH_name()+"x"+plates.get(position).getFoodAmt());
+            summarize_price.setText(String.valueOf((plates.get(position).getFood().getPrice())*plates.get(position).getFoodAmt()) + "  Baht");
         }
     }
 

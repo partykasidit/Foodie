@@ -9,6 +9,15 @@ public class Plate implements Parcelable {
 
     private Food food;
     private ArrayList<Food> toppings;
+    private int foodAmt=0;
+
+    public int getFoodAmt() {
+        return foodAmt;
+    }
+
+    public void setFoodAmt(int foodAmt) {
+        this.foodAmt = foodAmt;
+    }
 
     Plate(Food food) {
         this.food = food;
@@ -25,6 +34,10 @@ public class Plate implements Parcelable {
 
     public Food getFood() {
         return food;
+    }
+
+    public void setFood(Food food) {
+        this.food = food;
     }
 
     @Override

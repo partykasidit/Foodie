@@ -17,8 +17,30 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent"/>
         android:layout_marginTop="60dp"
         android:scrollbars="vertical" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_totalprice"
+        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
+        android:textSize="20dp"
+        android:textColor="#000"
+        />
+
+    <Button
+        android:id="@+id/payBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="150dp"
+        android:layout_marginBottom="168dp"
+        android:onClick="onPayButtonClicked"
+        android:text="Pay"
+        android:textColor="#000"
+        android:textSize="20dp" />
+ 
 </RelativeLayout>
