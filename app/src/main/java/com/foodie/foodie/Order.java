@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Order {
 
-    private int orderNumber;
+    private String orderNumber;
     private boolean isFinished;
     private String customerUID;
     private String vendorName;
     private ArrayList<FoodOrder> foodOrders;
 
-    public Order(int orderNumber, boolean status, String customerUID, String vendorName, ArrayList<FoodOrder> foodOrders) {
+    public Order(String orderNumber, boolean status, String customerUID, String vendorName, ArrayList<FoodOrder> foodOrders) {
         this.orderNumber = orderNumber;
         this.isFinished = status;
         this.customerUID = customerUID;
@@ -18,7 +18,7 @@ public class Order {
         this.foodOrders = foodOrders;
     }
 
-    public int getOrderNumber() {
+    public String getOrderNumber() {
         return orderNumber;
     }
 

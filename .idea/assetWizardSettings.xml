@@ -3,37 +3,6 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
-        <entry key="imageWizard">
-          <value>
-            <PersistentState>
-              <option name="children">
-                <map>
-                  <entry key="imageAssetPanel">
-                    <value>
-                      <PersistentState>
-                        <option name="children">
-                          <map>
-                            <entry key="launcher">
-                              <value>
-                                <PersistentState>
-                                  <option name="values">
-                                    <map>
-                                      <entry key="foregroundImage" value="C:\Users\Benya\Desktop\res\mipmap-xxxhdpi\ic_foodie.png" />
-                                    </map>
-                                  </option>
-                                </PersistentState>
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </PersistentState>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </PersistentState>
-          </value>
-        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -59,9 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="50dc25" />
                             <entry key="outputName" value="ic_done" />
-                            <entry key="sourceFile" value="C:\Users\Benya" />
+                            <entry key="sourceFile" value="C:\Users\kasid" />
                           </map>
                         </option>
                       </PersistentState>

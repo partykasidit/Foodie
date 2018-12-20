@@ -6,24 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
+
     <TextView
         android:id="@+id/tv_recommended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/recommended"
+        android:layout_marginTop="72dp"
+        android:text="RECOMMENDED"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_recommendations"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="398dp"
         app:layout_constraintBottom_toTopOf="@id/bt_shop_button"
-        app:layout_constraintTop_toBottomOf="@id/tv_recommended">
+        app:layout_constraintTop_toBottomOf="@id/tv_recommended"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -31,20 +43,24 @@
         android:id="@+id/bt_shop_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/shop_button"
+        android:background="@color/lightblue"
         android:onClick="onShopButtonClicked"
+        android:text="@string/shop_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/my_order_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/my_order_button"
+        android:background="@color/lightorange"
         android:onClick="onMyOrderButtonClicked"
+        android:text="@string/my_order_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <android.support.constraint.Guideline
@@ -53,15 +69,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onLoginButtonClicked"
-        android:text="Login"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="167dp" />
 
 
 </android.support.constraint.ConstraintLayout>
