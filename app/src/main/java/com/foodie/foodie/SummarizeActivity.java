@@ -224,7 +224,7 @@ public class SummarizeActivity extends AppCompatActivity {
             startActivity(intent);
 
         } else {
-            Toast.makeText(this,"Please log in to make order",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Please log in to make order",Toast.LENGTH_SHORT).show();
         }
 
     }

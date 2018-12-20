@@ -14,10 +14,9 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-// decide here whether to navigate to Login or Main Activity
-
-        SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
-        if (pref.getBoolean("activity_executed", false)) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
+        String userUID = sharedPreferences.getString("UserUID",null);
+        if(userUID != null) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -26,7 +25,6 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-        Log.d("Splash","Test Splash");
     }
 
 }
