@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -21,6 +24,7 @@ import java.util.HashMap;
 import javax.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity {
+    android.support.v7.widget.Toolbar toolbar;
 
     private RecyclerView mRecommendationList;
     private RecommendationListAdapter mAdapter;
@@ -30,10 +34,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) {
-            actionBar.hide();
-        }
+        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("  Home");
+        toolbar.setLogo(R.drawable.ic_home_black_24dp);
+
+
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menus").document("Recommendations").addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -68,6 +75,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.login:
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void onShopButtonClicked(View view) {
         Intent intent = new Intent(MainActivity.this,ShopActivity.class);
         startActivity(intent);
@@ -78,10 +103,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onLoginButtonClicked(View view){
-        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-        startActivity(intent);
-    }
+
 
     public void onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);

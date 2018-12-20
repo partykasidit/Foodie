@@ -4,31 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MenuActivity"
-    android:background="@drawable/foodiebackground">
+    tools:context=".MenuActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_food_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:layout_marginTop="8dp"
-        android:requiresFadingEdge="horizontal"
-        android:fadingEdgeLength="150dp">
+        android:layout_weight="1"
+        android:fadingEdgeLength="150dp"
+        android:requiresFadingEdge="horizontal">
 
     </android.support.v7.widget.RecyclerView>
 
     <Button
         android:id="@+id/bt_summarize_button"
-        android:text="@string/summarize_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_button"
         android:onClick="onSummarizeButtonClicked"
-        android:textColor="#FFFFFF"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" />
+        android:text="@string/summarize_button"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
