@@ -25,8 +25,8 @@ import java.util.HashMap;
 import javax.annotation.Nullable;
 
 public class MenuActivity extends AppCompatActivity {
-    Toolbar toolbar;
 
+    Toolbar toolbar;
     private RecyclerView mFoodList;
     private FoodListAdapter mFoodAdapter;
     private String selectedVendor;

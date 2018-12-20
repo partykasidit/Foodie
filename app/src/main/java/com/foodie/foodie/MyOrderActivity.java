@@ -28,8 +28,8 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 public class MyOrderActivity extends AppCompatActivity {
-    Toolbar toolbar;
 
+    Toolbar toolbar;
     private RecyclerView recyclerView;
     private MyOrderAdapter adapter;
 
@@ -65,24 +65,27 @@ public class MyOrderActivity extends AppCompatActivity {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
                     for (Object object: documentSnapshot.getData().keySet()){
                         String key = (String) object;
-                        HashMap<String,Object> order = (HashMap<String, Object>)documentSnapshot.get(key);
-                        Map<String,Object> foodOrderMap = (Map<String,Object>) order.get("foodOrders");
-                        ArrayList<Object> foodOrderArrayList = new ArrayList<Object>(foodOrderMap.values());
-                        ArrayList<FoodOrder> foodOrders = new ArrayList<>();
-                        for(int i=0;i<foodOrderArrayList.size();i++) {
-                            if(foodOrderArrayList.get(i) instanceof Map) {
-                                Map<String,Object> foodOrder = (Map<String,Object>)foodOrderArrayList.get(i);
-                                String foodName = (String) foodOrder.get("foodName");
-                                Long longAmount = (Long) foodOrder.get("amount");
-                                int amount = longAmount.intValue();
-                                foodOrders.add(new FoodOrder(foodName,amount));
-                            } else {
-                                Log.e("Foodie-MOA","data format invalid, check database");
+                        if(documentSnapshot.get(key) instanceof Map) {
+                            HashMap<String,Object> order = (HashMap<String, Object>)documentSnapshot.get(key);
+                            Map<String,Object> foodOrderMap = (Map<String,Object>) order.get("foodOrders");
+                            ArrayList<Object> foodOrderArrayList = new ArrayList<Object>(foodOrderMap.values());
+                            ArrayList<FoodOrder> foodOrders = new ArrayList<>();
+                            for(int i=0;i<foodOrderArrayList.size();i++) {
+                                if(foodOrderArrayList.get(i) instanceof Map) {
+                                    Map<String,Object> foodOrder = (Map<String,Object>)foodOrderArrayList.get(i);
+                                    String foodName = (String) foodOrder.get("foodName");
+                                    Long longAmount = (Long) foodOrder.get("amount");
+                                    int amount = longAmount.intValue();
+                                    foodOrders.add(new FoodOrder(foodName,amount));
+                                } else {
+                                    Log.e("Foodie-MOA","data format invalid, check database");
+                                }
                             }
+                            orders.add(new Order(key,(Boolean) order.get("isFinished"),(String) order.get("customerUID"),(String) order.get("vendorName"),foodOrders));
+                        } else {
+                            Log.e("Foodie-MOA","data format invalid, check database");
                         }
-                        orders.add(new Order(key,(Boolean) order.get("isFinished"),(String) order.get("customerUID"),(String) order.get("vendorName"),foodOrders));
                     }
-
 
                     Iterator iterator = orders.iterator();
                     while(iterator.hasNext()) {
@@ -96,8 +99,6 @@ public class MyOrderActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     adapter = new MyOrderAdapter(orders,getApplicationContext());
                     recyclerView.setAdapter(adapter);
-
-
 
                 }else {
                     System.out.print("Don't have any orders");

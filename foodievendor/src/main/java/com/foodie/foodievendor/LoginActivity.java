@@ -1,6 +1,8 @@
 package com.foodie.foodievendor;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,6 +57,11 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("mAuth", mAuth.getUid());
+        editor.apply();
     }
 
     @Override

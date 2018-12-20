@@ -1,7 +1,8 @@
-package com.foodie.foodie;
+package com.foodie.foodievendor;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyFoodOrderAdapter extends RecyclerView.Adapter<MyFoodOrderAdapter.FoodOrderViewHolder>{
+public class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderAdapter.FoodOrderViewHolder>{
 
     private ArrayList<FoodOrder> foodOrders;
 
-    MyFoodOrderAdapter(ArrayList<FoodOrder> foodOrders) {
+    public FoodOrderAdapter(ArrayList<FoodOrder> foodOrders) {
         this.foodOrders = foodOrders;
     }
 
@@ -33,7 +34,7 @@ public class MyFoodOrderAdapter extends RecyclerView.Adapter<MyFoodOrderAdapter.
     @Override
     public FoodOrderViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View view = inflater.inflate(R.layout.my_food_order,viewGroup,false);
+        View view = inflater.inflate(R.layout.food_order,viewGroup,false);
         return new FoodOrderViewHolder(view);
     }
 
@@ -42,6 +43,7 @@ public class MyFoodOrderAdapter extends RecyclerView.Adapter<MyFoodOrderAdapter.
         FoodOrder currentFoodOrder = foodOrders.get(i);
         foodOrderViewHolder.foodName.setText(currentFoodOrder.getFoodName());
         foodOrderViewHolder.amount.setText(String.valueOf(currentFoodOrder.getAmount()));
+
     }
 
     @Override
