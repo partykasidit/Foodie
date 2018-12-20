@@ -16,13 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -84,8 +80,6 @@ public class SummarizeActivity extends AppCompatActivity {
     private SummarizeListAdaptor listAdaptor;
     private TextView mSumprice;
     private FirebaseAuth mAuth;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference myRef;
     String userID;
     private  Order order;
     private SharedPreferences sharedPreferences;
@@ -224,14 +218,14 @@ public class SummarizeActivity extends AppCompatActivity {
             data.put("vendorName",vendorName);
             db.collection("Orders").document("bXH5xY7FQFqQPtxw6cAU").update(String.valueOf(i),data);
 
+            Toast.makeText(this,"Order made!",Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(SummarizeActivity.this, MainActivity.class);
             startActivity(intent);
 
+        } else {
+            Toast.makeText(this,"Please log in to make order",Toast.LENGTH_SHORT);
         }
-
-
-
-
 
     }
 
