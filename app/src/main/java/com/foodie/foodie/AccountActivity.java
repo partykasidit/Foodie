@@ -43,7 +43,6 @@ public class AccountActivity extends AppCompatActivity {
         mLogoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 mAuth.signOut();
                 LoginManager.getInstance().logOut();
                 updateUI();
