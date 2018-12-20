@@ -78,7 +78,7 @@ public class SummarizeActivity extends AppCompatActivity {
         }
     }
 
-   final ArrayList<Plate> orderView = new ArrayList<>();
+    final ArrayList<Plate> orderView = new ArrayList<>();
     private static final String TAG = "SummarizeActivity";
     private RecyclerView mSummarizeList;
     private SummarizeListAdaptor listAdaptor;
@@ -91,7 +91,7 @@ public class SummarizeActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private FirebaseFirestore db;
     String vendorName;
-    int i =0;
+    int i =1 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +106,6 @@ public class SummarizeActivity extends AppCompatActivity {
         /**
          *
          */
-
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Orders").document("bXH5xY7FQFqQPtxw6cAU").addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -174,7 +173,7 @@ public class SummarizeActivity extends AppCompatActivity {
 
         for(Plate p: order){
             if(orderView.contains(p)){
-             int i   =orderView.get(orderView.indexOf(p)).getFoodAmt()+1;
+             int i = orderView.get(orderView.indexOf(p)).getFoodAmt()+1;
                 orderView.get(orderView.indexOf(p)).setFoodAmt(i);
             }else{
                 p.setFoodAmt(1);
@@ -206,11 +205,10 @@ public class SummarizeActivity extends AppCompatActivity {
     }
 
     public void onPayButtonClicked(View v){
-
         String userUID = sharedPreferences.getString("UserUID",null);
         if(userUID != null) {
             Log.d("Foodie-SA",userUID);
-            Log.d("hihi", "onPayButtonClicked: " +db.collection("Orders").document("ixAGVMvgXXipttf6nO49").toString());
+            Log.d("hihi", "onPayButtonClicked: " + db.collection("Orders").document("ixAGVMvgXXipttf6nO49").toString());
 
 
             /***/
@@ -218,8 +216,8 @@ public class SummarizeActivity extends AppCompatActivity {
             data.put("customerUID",userUID);
             Map<String,Object> foodOrder = new HashMap<>();
 
-            Map<String,Object> foodID = new HashMap<>();
             for(int i =0;i< orderView.size();i++) {
+                Map<String,Object> foodID = new HashMap<>();
                 foodID.put("amount",orderView.get(i).getFoodAmt());
                 foodID.put("foodName",orderView.get(i).getFood().getTH_name());
                 foodOrder.put(String.valueOf(i+1),foodID);
@@ -228,6 +226,9 @@ public class SummarizeActivity extends AppCompatActivity {
             data.put("isFinished",false);
             data.put("vendorName",vendorName);
             db.collection("Orders").document("bXH5xY7FQFqQPtxw6cAU").update(String.valueOf(i),data);
+
+            Intent intent = new Intent(SummarizeActivity.this, MainActivity.class);
+            startActivity(intent);
 
         }
 
