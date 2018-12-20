@@ -1,8 +1,10 @@
 package com.foodie.foodie;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -93,6 +95,25 @@ public class MyOrderActivity extends AppCompatActivity {
                         if(!currentOrder.getCustomerUID().equals(userUID)) {
                             iterator.remove();
                         }
+                    }
+
+                    boolean notify = false;
+
+                    for(int i=0;i<orders.size();i++) {
+                        if(orders.get(i).isFinished()) {
+                            notify = true;
+                        }
+                    }
+
+                    if(notify) {
+                        Notification.Builder builder = new Notification.Builder(getApplicationContext())
+                                .setSmallIcon(R.mipmap.ic_launcher)
+                                .setContentTitle("Your food is ready!")
+                                .setContentText("Please pick up your food.")
+                                .setPriority(Notification.PRIORITY_MAX);
+
+                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+                        notificationManager.notify(1, builder.build());
                     }
 
                     recyclerView = findViewById(R.id.rv_orders);
