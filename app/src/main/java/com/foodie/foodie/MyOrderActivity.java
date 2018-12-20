@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -55,7 +56,7 @@ public class MyOrderActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
 
-                final ArrayList<Order> orders = new ArrayList<>();
+                ArrayList<Order> orders = new ArrayList<>();
 
                 if (e != null) {
                     return;
@@ -69,20 +70,33 @@ public class MyOrderActivity extends AppCompatActivity {
                         ArrayList<Object> foodOrderArrayList = new ArrayList<Object>(foodOrderMap.values());
                         ArrayList<FoodOrder> foodOrders = new ArrayList<>();
                         for(int i=0;i<foodOrderArrayList.size();i++) {
-                            Log.d("Foodie-MOA",foodOrderArrayList.get(i).toString());
-                            Map<String,Object> foodOrder = (Map<String,Object>)foodOrderArrayList.get(i);
-                            String foodName = (String) foodOrder.get("foodName");
-                            Long longAmount = (Long) foodOrder.get("amount");
-                            int amount = longAmount.intValue();
-                            Log.d("Foodie-MOA","foodName : " + foodName + " , " + "amount : " + amount );
-                            foodOrders.add(new FoodOrder(foodName,amount));
+                            if(foodOrderArrayList.get(i) instanceof Map) {
+                                Map<String,Object> foodOrder = (Map<String,Object>)foodOrderArrayList.get(i);
+                                String foodName = (String) foodOrder.get("foodName");
+                                Long longAmount = (Long) foodOrder.get("amount");
+                                int amount = longAmount.intValue();
+                                foodOrders.add(new FoodOrder(foodName,amount));
+                            } else {
+                                Log.e("Foodie-MOA","data format invalid, check database");
+                            }
                         }
                         orders.add(new Order(key,(Boolean) order.get("isFinished"),(String) order.get("customerUID"),(String) order.get("vendorName"),foodOrders));
                     }
+
+                    Iterator iterator = orders.iterator();
+                    while(iterator.hasNext()) {
+                        Order currentOrder = (Order) iterator.next();
+                        if(!currentOrder.getCustomerUID().equals(userUID)) {
+                            iterator.remove();
+                        }
+                    }
+
                     recyclerView = findViewById(R.id.rv_orders);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     adapter = new MyOrderAdapter(orders,getApplicationContext());
                     recyclerView.setAdapter(adapter);
+
+
 
                 }else {
                     System.out.print("Don't have any orders");
