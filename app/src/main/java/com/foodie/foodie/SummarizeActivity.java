@@ -157,9 +157,6 @@ public class SummarizeActivity extends AppCompatActivity {
          */
 
 
-
-
-
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) {
             actionBar.setTitle("Summarize");
