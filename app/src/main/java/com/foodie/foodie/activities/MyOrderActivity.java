@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,7 +31,6 @@ import javax.annotation.Nullable;
 
 public class MyOrderActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
     private RecyclerView recyclerView;
     private MyOrderAdapter adapter;
 
@@ -39,11 +39,11 @@ public class MyOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("  My Order");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setTitle("My Orders");
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
         final String userUID = sharedPreferences.getString("UserUID",null);

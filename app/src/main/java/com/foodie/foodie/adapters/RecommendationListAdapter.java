@@ -1,6 +1,8 @@
 package com.foodie.foodie.adapters;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +12,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.foodie.foodie.R;
+import com.foodie.foodie.activities.SummarizeActivity;
 import com.foodie.foodie.models.Food;
+import com.foodie.foodie.models.Plate;
 
 import java.util.ArrayList;
 
@@ -33,6 +37,16 @@ public class RecommendationListAdapter extends RecyclerView.Adapter<Recommendati
             foodImage = itemView.findViewById(R.id.iv_foodImage);
             foodName = itemView.findViewById(R.id.tv_foodName);
             price = itemView.findViewById(R.id.tv_price);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    /*ArrayList<Plate> order = new ArrayList<>();
+                    order.add(new Plate(foodList.get(getAdapterPosition())))
+                    Intent intent = new Intent(view.getContext(),SummarizeActivity.class);
+                    intent.putParcelableArrayListExtra()
+                    view.getContext().startActivity(intent);*/
+                }
+            });
         }
 
     }

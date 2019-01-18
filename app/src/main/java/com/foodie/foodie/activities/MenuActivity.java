@@ -38,11 +38,6 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("  Menu");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         Intent intent = getIntent();
         selectedVendor = intent.getStringExtra("selectedVendor");
         String selectedVendorTHName = intent.getStringExtra("selectedVendorTH");
@@ -96,9 +91,7 @@ public class MenuActivity extends AppCompatActivity {
         }else {
             Toast.makeText(this,"Please select your food.",Toast.LENGTH_SHORT).show();
         }
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

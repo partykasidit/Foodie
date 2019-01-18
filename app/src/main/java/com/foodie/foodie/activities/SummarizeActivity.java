@@ -89,16 +89,9 @@ public class SummarizeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summarize);
-        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("  Summarize");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Log.d(TAG, "onCreate: started.");
         db = FirebaseFirestore.getInstance();
-
-        /**
-         *
-         */
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Orders").document("bXH5xY7FQFqQPtxw6cAU").addSnapshotListener(new EventListener<DocumentSnapshot>() {

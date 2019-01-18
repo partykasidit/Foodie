@@ -1,49 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.SummarizeActivity">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:elevation="6dp"
-        android:minHeight="?attr/actionBarSize">
-    </android.support.v7.widget.Toolbar>
-
-
     <android.support.v7.widget.RecyclerView
-        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="8dp"
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_totalprice"
-        android:layout_centerVertical="true"
-        android:layout_centerInParent="true"
         android:textSize="20dp"
         android:textColor="#000"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/payBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
 
     <Button
         android:id="@+id/payBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/my_recycler_view"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
@@ -51,6 +37,7 @@
         android:onClick="onPayButtonClicked"
         android:text="Pay"
         android:textColor="#ffffff "
-        android:background="@drawable/rounded_button"/>
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

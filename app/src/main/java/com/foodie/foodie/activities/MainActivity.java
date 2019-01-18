@@ -34,11 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("  Home");
-        toolbar.setLogo(R.drawable.ic_home_black_24dp);
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menus").document("Recommendations").addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
