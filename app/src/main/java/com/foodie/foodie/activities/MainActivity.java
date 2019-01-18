@@ -1,19 +1,18 @@
-package com.foodie.foodie;
+package com.foodie.foodie.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.foodie.foodie.models.Food;
+import com.foodie.foodie.R;
+import com.foodie.foodie.adapters.RecommendationListAdapter;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,35 +23,24 @@ import java.util.HashMap;
 
 import javax.annotation.Nullable;
 
-public class MenuActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
+    android.support.v7.widget.Toolbar toolbar;
 
-    Toolbar toolbar;
-    private RecyclerView mFoodList;
-    private FoodListAdapter mFoodAdapter;
-    private String selectedVendor;
+    private RecyclerView mRecommendationList;
+    private RecommendationListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_main);
 
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("  Menu");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Intent intent = getIntent();
-        selectedVendor = intent.getStringExtra("selectedVendor");
-        String selectedVendorTHName = intent.getStringExtra("selectedVendorTH");
-
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) {
-            actionBar.setTitle(selectedVendorTHName);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        getSupportActionBar().setTitle("  Home");
+        toolbar.setLogo(R.drawable.ic_home_black_24dp);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Menus").document(selectedVendor).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        db.collection("Menus").document("Recommendations").addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 ArrayList<Food> foods = new ArrayList<>();
@@ -70,43 +58,52 @@ public class MenuActivity extends AppCompatActivity {
                         }
 
                     }
-                    mFoodList = findViewById(R.id.rv_food_list);
+                    mRecommendationList = findViewById(R.id.rv_recommendations);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                    mFoodList.setLayoutManager(layoutManager);
-                    mFoodList.setHasFixedSize(true);
-                    mFoodAdapter = new FoodListAdapter(foods,getSupportFragmentManager());
-                    mFoodList.setAdapter(mFoodAdapter);
+                    mRecommendationList.setLayoutManager(layoutManager);
+                    mRecommendationList.setHasFixedSize(true);
+                    mAdapter = new RecommendationListAdapter(foods);
+                    mRecommendationList.setAdapter(mAdapter);
                 } else {
                     Log.d("Foodie-MA", "Current data: null");
                 }
-
             }
         });
-    }
-
-    public void onSummarizeButtonClicked(View view) {
-        ArrayList<Plate> order = mFoodAdapter.getOrder();
-        if(order.size() > 0) {
-            Intent intent = new Intent(MenuActivity.this,SummarizeActivity.class);
-            intent.putParcelableArrayListExtra("order",order);
-            intent.putExtra("selectedVendor",selectedVendor);
-            startActivity(intent);
-        }else {
-            Toast.makeText(this,"Please select your food.",Toast.LENGTH_SHORT).show();
-        }
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.login:
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                break;
+
         }
+        return super.onOptionsItemSelected(item);
     }
 
+    public void onShopButtonClicked(View view) {
+        Intent intent = new Intent(MainActivity.this,ShopActivity.class);
+        startActivity(intent);
+    }
+
+    public void onMyOrderButtonClicked(View view) {
+        Intent intent = new Intent(MainActivity.this,MyOrderActivity.class);
+        startActivity(intent);
+    }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }

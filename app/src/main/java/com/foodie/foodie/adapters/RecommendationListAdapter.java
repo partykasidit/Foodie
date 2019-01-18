@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.foodie.foodie.R;
+import com.foodie.foodie.models.Food;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,7 @@ public class RecommendationListAdapter extends RecyclerView.Adapter<Recommendati
 
     private ArrayList<Food> foodList;
 
-    RecommendationListAdapter(ArrayList<Food> foodList) {
+    public RecommendationListAdapter(ArrayList<Food> foodList) {
         this.foodList = foodList;
     }
 

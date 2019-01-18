@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +15,9 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+import com.foodie.foodie.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -26,9 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.auth.User;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity {

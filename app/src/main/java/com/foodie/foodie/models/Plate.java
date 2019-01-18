@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -19,7 +19,7 @@ public class Plate implements Parcelable {
         this.foodAmt = foodAmt;
     }
 
-    Plate(Food food) {
+    public Plate(Food food) {
         this.food = food;
         toppings = new ArrayList<>();
     }

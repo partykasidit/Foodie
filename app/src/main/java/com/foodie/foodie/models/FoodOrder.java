@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.models;
 
 public class FoodOrder {
 

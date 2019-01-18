@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.foodie.foodie.R;
+import com.foodie.foodie.models.Vendor;
+import com.foodie.foodie.adapters.VendorListAdapter;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;

@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.utils;
 
 import android.content.Context;
 

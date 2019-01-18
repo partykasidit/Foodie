@@ -1,10 +1,14 @@
-package com.foodie.foodie;
+package com.foodie.foodie.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.foodie.foodie.R;
+import com.foodie.foodie.activities.LoginActivity;
+import com.foodie.foodie.activities.SplashActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 

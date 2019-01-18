@@ -1,9 +1,8 @@
-package com.foodie.foodie;
+package com.foodie.foodie.activities;
 
 import android.app.Notification;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,12 +10,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.foodie.foodie.adapters.MyOrderAdapter;
+import com.foodie.foodie.models.Order;
+import com.foodie.foodie.R;
+import com.foodie.foodie.models.FoodOrder;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;

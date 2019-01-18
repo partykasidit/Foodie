@@ -1,11 +1,14 @@
-package com.foodie.foodie;
+package com.foodie.foodie.activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+
+import com.foodie.foodie.R;
+import com.foodie.foodie.activities.LoginActivity;
+import com.foodie.foodie.activities.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

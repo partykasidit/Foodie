@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.adapters;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.foodie.foodie.utils.GlideApp;
+import com.foodie.foodie.R;
+import com.foodie.foodie.activities.MenuActivity;
+import com.foodie.foodie.models.Vendor;
 
 import java.util.ArrayList;
 
@@ -19,7 +22,7 @@ public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.Ve
 
     private ArrayList<Vendor> vendors;
 
-    VendorListAdapter(ArrayList<Vendor> vendors) {
+    public VendorListAdapter(ArrayList<Vendor> vendors) {
         this.vendors = vendors;
     }
 

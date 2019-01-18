@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -13,7 +13,7 @@ public class Food implements Parcelable {
     private double price;
     private StorageReference imageReference;
 
-    Food(String EN_name, String TH_name, double price, String imageURL) {
+    public Food(String EN_name, String TH_name, double price, String imageURL) {
         this.EN_name = EN_name;
         this.TH_name = TH_name;
         this.price = price;
@@ -22,20 +22,19 @@ public class Food implements Parcelable {
         }
     }
 
-    String getEN_name() {
+    public String getEN_name() {
         return EN_name;
     }
 
-    String getTH_name() {
+    public String getTH_name() {
         return TH_name;
     }
 
-    double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-
-    StorageReference getImageReference() {
+    public StorageReference getImageReference() {
         return imageReference;
     }
 

@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.adapters;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.foodie.foodie.R;
+import com.foodie.foodie.models.Food;
+import com.foodie.foodie.models.Plate;
+
 import java.util.ArrayList;
 
 public class PlateListAdapter extends RecyclerView.Adapter<PlateListAdapter.PlateViewHolder>{
@@ -16,7 +20,7 @@ public class PlateListAdapter extends RecyclerView.Adapter<PlateListAdapter.Plat
     private ArrayList<Plate> plates;
     private Activity context;
 
-    PlateListAdapter(Activity context,ArrayList plates) {
+    public PlateListAdapter(Activity context,ArrayList plates) {
         this.plates = plates;
         this.context = context;
     }

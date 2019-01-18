@@ -1,10 +1,8 @@
-package com.foodie.foodie;
+package com.foodie.foodie.activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,21 +12,22 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.foodie.foodie.R;
+import com.foodie.foodie.adapters.SummarizeListAdapter;
+import com.foodie.foodie.models.Food;
+import com.foodie.foodie.models.Order;
+import com.foodie.foodie.models.Plate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -77,11 +76,11 @@ public class SummarizeActivity extends AppCompatActivity {
     final ArrayList<Plate> orderView = new ArrayList<>();
     private static final String TAG = "SummarizeActivity";
     private RecyclerView mSummarizeList;
-    private SummarizeListAdaptor listAdaptor;
+    private SummarizeListAdapter listAdaptor;
     private TextView mSumprice;
     private FirebaseAuth mAuth;
     String userID;
-    private  Order order;
+    private Order order;
     private SharedPreferences sharedPreferences;
     private FirebaseFirestore db;
     String vendorName;
@@ -179,7 +178,7 @@ public class SummarizeActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mSummarizeList.setLayoutManager(layoutManager);
         mSummarizeList.setHasFixedSize(true);
-        listAdaptor= new SummarizeListAdaptor(orderView);
+        listAdaptor= new SummarizeListAdapter(orderView);
         mSummarizeList.setAdapter(listAdaptor);
 
         sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);

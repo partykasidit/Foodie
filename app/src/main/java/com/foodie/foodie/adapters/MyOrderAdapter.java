@@ -1,4 +1,4 @@
-package com.foodie.foodie;
+package com.foodie.foodie.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.foodie.foodie.models.Order;
+import com.foodie.foodie.R;
 
 import java.util.ArrayList;
 

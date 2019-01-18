@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bblue"
     android:orientation="vertical"
-    tools:context=".WelcomeActivity"
+    tools:context=".activities.WelcomeActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout

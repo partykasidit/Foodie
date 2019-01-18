@@ -1,4 +1,6 @@
-package com.foodie.foodie;
+package com.foodie.foodie.models;
+
+import com.foodie.foodie.models.FoodOrder;
 
 import java.util.ArrayList;
 

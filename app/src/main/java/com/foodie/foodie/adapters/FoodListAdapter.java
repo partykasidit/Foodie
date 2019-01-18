@@ -1,7 +1,6 @@
-package com.foodie.foodie;
+package com.foodie.foodie.adapters;
 
 import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.foodie.foodie.models.Food;
+import com.foodie.foodie.models.Plate;
+import com.foodie.foodie.R;
 
 import java.util.ArrayList;
 
@@ -22,13 +24,13 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.FoodVi
     private ArrayList<Plate> plates;
     private FragmentManager fragmentManager;
 
-    FoodListAdapter(ArrayList<Food> foodList,FragmentManager fragmentManager) {
+    public FoodListAdapter(ArrayList<Food> foodList,FragmentManager fragmentManager) {
         this.foodList = foodList;
         this.plates = new ArrayList<>();
         this.fragmentManager = fragmentManager;
     }
 
-    ArrayList<Plate> getOrder() {
+    public ArrayList<Plate> getOrder() {
         return plates;
     }
 
