@@ -20,6 +20,7 @@ import com.foodie.foodie.adapters.SummarizeListAdapter;
 import com.foodie.foodie.models.Food;
 import com.foodie.foodie.models.Order;
 import com.foodie.foodie.models.Plate;
+import com.foodie.foodie.utils.MarginItemDecoration;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -173,6 +174,7 @@ public class SummarizeActivity extends AppCompatActivity {
         mSummarizeList.setHasFixedSize(true);
         listAdaptor= new SummarizeListAdapter(orderView);
         mSummarizeList.setAdapter(listAdaptor);
+        mSummarizeList.addItemDecoration(new MarginItemDecoration((int) getResources().getDimension(R.dimen.default_padding)));
 
         sharedPreferences = this.getSharedPreferences("FirebaseUser",Context.MODE_PRIVATE);
 

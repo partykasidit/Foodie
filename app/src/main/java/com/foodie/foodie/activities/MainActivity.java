@@ -80,12 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void onShopButtonClicked(View view) {
+    public void onOrderFoodButtonClicked(View view) {
         Intent intent = new Intent(MainActivity.this,ShopActivity.class);
         startActivity(intent);
     }

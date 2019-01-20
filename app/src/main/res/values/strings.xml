@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Foodie</string>
-    <string name="shop_button">SHOP</string>
+    <string name="order_food_button">ORDER FOOD</string>
     <string name="my_orders_button">MY ORDERS</string>
     <string name="summarize_button">SUMMARIZE</string>
     <string name="title_activity_summarize">SummarizeActivity</string>
-    <string name="recommended">RECOMMENDED</string>
+    <string name="recommended">Recommended</string>
     <string name="recommended_food_image">Recommended Food Image</string>
     <string name="add_button">Add button</string>
     <string name="remove_button">Remove button</string>

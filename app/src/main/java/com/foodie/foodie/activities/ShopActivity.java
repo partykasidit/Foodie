@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.foodie.foodie.R;
 import com.foodie.foodie.models.Vendor;
 import com.foodie.foodie.adapters.VendorListAdapter;
+import com.foodie.foodie.utils.MarginItemDecoration;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -60,6 +61,7 @@ public class ShopActivity extends AppCompatActivity {
                 mVendorList.setHasFixedSize(true);
                 mListAdapter = new VendorListAdapter(vendors);
                 mVendorList.setAdapter(mListAdapter);
+                mVendorList.addItemDecoration(new MarginItemDecoration((int) getResources().getDimension(R.dimen.default_padding)));
             }
         });
     }

@@ -22,7 +22,7 @@
     </style>
 
     <style name="MyActionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
-        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
     </style>
     
     <style name="AppTheme.Launcher">

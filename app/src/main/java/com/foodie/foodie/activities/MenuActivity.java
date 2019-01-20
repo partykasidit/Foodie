@@ -16,6 +16,7 @@ import com.foodie.foodie.models.Food;
 import com.foodie.foodie.adapters.FoodListAdapter;
 import com.foodie.foodie.models.Plate;
 import com.foodie.foodie.R;
+import com.foodie.foodie.utils.MarginItemDecoration;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,7 +29,6 @@ import javax.annotation.Nullable;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
     private RecyclerView mFoodList;
     private FoodListAdapter mFoodAdapter;
     private String selectedVendor;
@@ -73,6 +73,7 @@ public class MenuActivity extends AppCompatActivity {
                     mFoodList.setHasFixedSize(true);
                     mFoodAdapter = new FoodListAdapter(foods,getSupportFragmentManager());
                     mFoodList.setAdapter(mFoodAdapter);
+                    mFoodList.addItemDecoration(new MarginItemDecoration((int) getResources().getDimension(R.dimen.default_padding)));
                 } else {
                     Log.d("Foodie-MA", "Current data: null");
                 }

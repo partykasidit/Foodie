@@ -17,6 +17,7 @@ import com.foodie.foodie.adapters.MyOrderAdapter;
 import com.foodie.foodie.models.Order;
 import com.foodie.foodie.R;
 import com.foodie.foodie.models.FoodOrder;
+import com.foodie.foodie.utils.MarginItemDecoration;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -119,6 +120,7 @@ public class MyOrderActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     adapter = new MyOrderAdapter(orders,getApplicationContext());
                     recyclerView.setAdapter(adapter);
+                    recyclerView.addItemDecoration(new MarginItemDecoration((int) getResources().getDimension(R.dimen.default_padding)));
 
                 }else {
                     System.out.print("Don't have any orders");
